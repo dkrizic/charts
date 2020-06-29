@@ -28,6 +28,19 @@ spec:
       serviceAccountName: {{ include "homebridge.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: homebridge-prepare
+          image: busybox
+          command: [ 'sh', '-c', 'sed -e "s/LOCAL_IP/$(hostname -i)/g" </original/config.json >/homebridge/config.json; cp /original/package.json /homebridge/' ]
+          volumeMounts:
+            - name: homebridge-configmap
+              mountPath: /original/config.json
+              subPath: config.json
+            - name: homebridge-configmap
+              mountPath: /original/package.json
+              subPath: package.json
+            - name: homebridge-config
+              mountPath: /homebridge
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -36,7 +49,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -48,6 +61,28 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: homebridge-configmap
+            mountPath: /original/config.json
+            subPath: config.json
+          - name: homebridge-configmap
+            mountPath: /original/package.json
+            subPath: package.json
+          - name: homebridge-config
+            mountPath: /homebridge
+          env:
+            - name: HOMEBRIDGE_CONFIG_UI
+              value: "1"
+            - name: HOMEBRIDGE_CONFIG_UI_PORT
+              value: "8080"
+            - name: HOMEBRIDGE_INSECURE
+              value: "1"
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: PACKAGES
+              value: ffmpeg
+            - name: TERMINATE_ON_ERROR
+              value: "1"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -60,3 +95,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: homebridge-configmap
+          configMap:
+            name: {{ include "homebridge.fullname" . }}
+        - name: homebridge-config
+          persistentVolumeClaim:
+            claimName: {{ include "homebridge.fullname" . }}
