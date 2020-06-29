@@ -49,7 +49,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8081
+              containerPort: {{ .Values.homebridge.containerPort }}
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -74,11 +74,11 @@ spec:
             - name: HOMEBRIDGE_CONFIG_UI
               value: "1"
             - name: HOMEBRIDGE_CONFIG_UI_PORT
-              value: "8080"
+              value: "{{ .Values.homebridge.containerPort }}"
             - name: HOMEBRIDGE_INSECURE
               value: "1"
             - name: TZ
-              value: "Europe/Berlin"
+              value: "{{ .Values.homebridge.timezone }}"
             - name: PACKAGES
               value: ffmpeg
             - name: TERMINATE_ON_ERROR

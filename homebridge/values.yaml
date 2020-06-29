@@ -77,6 +77,8 @@ persistence:
   storageClassName: ""
 
 homebridge:
+  timezone: "Europe/Berlin"
+  containerPort: 8080
   hostNetwork: true
   config: >-
     {
