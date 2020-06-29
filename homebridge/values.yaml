@@ -79,6 +79,7 @@ persistence:
 homebridge:
   timezone: "Europe/Berlin"
   containerPort: 8080
+  nodePort: 32100
   hostNetwork: true
   config: >-
     {
