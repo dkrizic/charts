@@ -11,6 +11,5 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-      nodePort: {{ .Values.homebridge.nodePort }}
   selector:
     {{- include "homebridge.selectorLabels" . | nindent 4 }}

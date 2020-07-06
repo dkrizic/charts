@@ -79,12 +79,11 @@ persistence:
 homebridge:
   timezone: "Europe/Berlin"
   containerPort: 8080
-  nodePort: 32100
   hostNetwork: true
   config: >-
     {
     	"bridge": {
-    		"name": "Homebridge Test",
+    		"name": "Homebridge Kubernetes Test",
     		"username": "CF:45:5F:E3:CE:33",
     		"port": 32050,
     		"pin": "041-45-166"
