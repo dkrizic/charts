@@ -58,12 +58,12 @@ resources: {}
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  #limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  #requests:
+  #  cpu: 100m
+  #  memory: 128Mi
 
 nodeSelector:
   kubernetes.io/arch: arm64
@@ -78,23 +78,23 @@ persistence:
 
 homebridge:
   timezone: "Europe/Berlin"
-  containerPort: 8080
+  containerPort: 8090
+  hapPort: 33000
   hostNetwork: true
   config: >-
     {
     	"bridge": {
-    		"name": "Homebridge Kubernetes Test",
-    		"username": "CF:45:5F:E3:CE:33",
-    		"port": 32050,
-    		"pin": "041-45-166"
+    		"name": "Homebridge Test",
+    		"username": "CF:45:5F:E3:CE:F8",
+    		"port": 32110,
+    		"pin": "041-45-167"
     	},
 
     	"description": "Homebridge Kubernetes Test",
 
     	"ports": {
-    		"start": 52050,
-    		"end": 52059,
-    		"comment": "This section is used to control the range of ports that separate accessory (like camera or television) should be bind to."
+    		"start": 52110,
+    		"end": 52119
     	},
 
         "accessories": [
