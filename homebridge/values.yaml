@@ -81,6 +81,9 @@ homebridge:
   containerPort: 8090
   hapPort: 33000
   hostNetwork: true
+  portHttp:
+    enabled: false
+    port: 1234
   config: >-
     {
     	"bridge": {

@@ -38,4 +38,14 @@ spec:
               servicePort: {{ $svcPort }}
           {{- end }}
     {{- end }}
+    {{- if .Values.homebridge.portHttp.enabled }}
+          - path: /motion
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: motion
+          - path: /doorbell
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: motion
+    {{- end }}
   {{- end }}

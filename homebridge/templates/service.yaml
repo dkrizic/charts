@@ -11,5 +11,10 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    {{- if .Values.homebridge.portHttp.enabled }}
+    - port: {{ .Values.homebridge.portHttp.port }}
+      protocol: TCP
+      name: motion
+    {{- end }}
   selector:
     {{- include "homebridge.selectorLabels" . | nindent 4 }}

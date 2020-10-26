@@ -54,6 +54,11 @@ spec:
             - name: hap
               containerPort: {{ .Values.homebridge.hapPort }}
               protocol: TCP
+            {{- if .Values.homebridge.portHttp.enabled }}
+            - name: motion
+              containerPort: {{ .Values.homebridge.portHttp.port }}
+              protocol: TCP
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /
