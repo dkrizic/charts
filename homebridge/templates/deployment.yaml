@@ -110,3 +110,4 @@ spec:
         - name: homebridge-config
           persistentVolumeClaim:
             claimName: {{ include "homebridge.fullname" . }}
+
