@@ -48,6 +48,8 @@ spec:
           volumeMounts:
             - name: checkmk-sites
               mountPath: /omd/sites
+            - name: temp
+              mountPath: /omd/sites/cmk/tmp
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -66,4 +68,6 @@ spec:
         - name: checkmk-sites
           persistentVolumeClaim:
             claimName: {{ include "checkmk.fullname" . }}-sites
-
+        - name: temp
+          emptyDir:
+            medium: Memory
