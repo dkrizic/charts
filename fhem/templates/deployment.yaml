@@ -11,6 +11,8 @@ spec:
   selector:
     matchLabels:
       {{- include "fhem.selectorLabels" . | nindent 6 }}
+  strategy:
+    type: Recreate
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -45,6 +47,9 @@ spec:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            failureThreshold: 10
           volumeMounts:
             - name: fhem
               mountPath: /opt/fhem
