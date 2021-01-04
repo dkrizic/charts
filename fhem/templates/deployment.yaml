@@ -29,6 +29,17 @@ spec:
       serviceAccountName: {{ include "fhem.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.cul.enable }}
+      initContainers:
+        - name: cul-permissions
+          securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+          image: busybox
+          command: ["sh", "-c", "chmod 666 {{ .Values.cul.device }}"]
+          volumeMounts:
+            - name: cul
+              mountPath: {{ .Values.cul.device }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -47,9 +58,9 @@ spec:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 20
+            initialDelaySeconds: 30
             periodSeconds: 10
-            failureThreshold: 10
+            failureThreshold: 20
           volumeMounts:
             - name: fhem
               mountPath: /opt/fhem
@@ -79,4 +90,5 @@ spec:
         - name: cul
           hostPath:
             path: {{ .Values.cul.device }}
+            type: CharDevice
         {{- end }}
