@@ -81,3 +81,7 @@ affinity: {}
 persistence:
   size: 1Gi
   storageClassName: ""
+
+cul:
+  enable: false
+  device: /dev/ttyACM0

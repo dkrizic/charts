@@ -53,6 +53,10 @@ spec:
           volumeMounts:
             - name: fhem
               mountPath: /opt/fhem
+            {{- if .Values.cul.enable }}
+            - name: cul
+              mountPath: {{ .Values.cul.device }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -71,3 +75,8 @@ spec:
         - name: fhem
           persistentVolumeClaim:
             claimName: {{ include "fhem.fullname" . }}
+        {{- if .Values.cul.enable }}
+        - name: cul
+          hostPath:
+            path: {{ .Values.cul.device }}
+        {{- end }}
