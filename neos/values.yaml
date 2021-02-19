@@ -1,14 +1,14 @@
-# Default values for icinga2.
+# Default values for neos.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: jordan/icinga2
+  repository: dkrizic/neos
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "c6e5ea8-linux-arm64"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
@@ -77,41 +77,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-database:
-  hostname: icinga-mariadb
-  username: icinga
-  password: icinga
-  port: 3306
-
-persistence:
-  icinga2:
-    cache: # var-cache-icinga
-      size: 1Gi
-      storageClass: ""
-    etc: # etc-icinga
-      size: 100Mi
-      storageClass: ""
-    lib: # var-lib-icinga
-      size: 1Gi
-      storageClass: ""
-    phpsessions:
-      size: 100Mi
-      storageClass: ""
-    log:
-      size: 1Gi
-      storageClass: ""
-    spool:
-      size: 1Gi
-      storageClass: ""
-  icingaweb2:
-    etc:
-      size: 1Gi
-      storageClass: ""
-    log:
-      size: 1Gi
-      storageClass: ""
-  apache2:
-    log: # var-log-apache2
-      size: 1Gi
-      storageClass: ""

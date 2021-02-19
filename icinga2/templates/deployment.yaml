@@ -11,6 +11,8 @@ spec:
   selector:
     matchLabels:
       {{- include "icinga2.selectorLabels" . | nindent 6 }}
+  strategy:
+    type: Recreate
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -33,6 +35,25 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: DEFAULT_MYSQL_USER
+              value: "{{ .Values.database.username }}"
+            - name: DEFAULT_MYSQL_PASS
+              value: "{{ .Values.database.password }}"
+            - name: DEFAULT_MYSQL_HOST
+              value: "{{ .Values.database.hostname }}"
+            - name: DEFAULT_MYSQL_PORT
+              value: "{{ .Values.database.port }}"
+            - name: ICINGA2_IDO_MYSQL_HOST
+              value: "{{ .Values.database.hostname }}"
+            - name: ICINGAWEB2_MYSQL_HOST
+              value: "{{ .Values.database.hostname }}"
+            - name: ICINGAWEB2_DIRECTOR_MYSQL_HOST
+              value: "{{ .Values.database.hostname }}"
+            - name: MYSQL_ROOT_USER
+              value: ""
+            - name: MYSQL_ROOT_PASSWORD
+              value: ""
           ports:
             - name: http
               containerPort: 80
@@ -45,6 +66,28 @@ spec:
             httpGet:
               path: /
               port: http
+            failureThreshold: 20
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          volumeMounts:
+            - name: var-cache-icinga
+              mountPath: /var/cache/icinga2
+#            - name: etc-icinga
+#              mountPath: /etc/icinga2
+            - name: etc-icingaweb
+              mountPath: /etc/icingaweb2
+            - name: var-lib-icinga
+              mountPath: /var/lib/icinga2
+            - name: var-lib-phpsessions
+              mountPath: /var/lib/php/sessions
+            - name: var-log-apache2
+              mountPath: /var/log/apache2
+            - name: var-log-icinga2
+              mountPath: /var/log/icinga2
+            - name: var-log-icingaweb2
+              mountPath: /var/log/icingaweb2
+            - name: var-spool-icinga2
+              mountPath: /var/spool/icinga2
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -59,3 +102,31 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: var-cache-icinga
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-cache
+        - name: etc-icinga
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-etc
+        - name: etc-icingaweb
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icingaweb2-etc
+        - name: var-lib-icinga
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-lib
+        - name: var-lib-phpsessions
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-phpsessions
+        - name: var-log-apache2
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-apache2-log
+        - name: var-log-icinga2
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-log
+        - name: var-log-icingaweb2
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icingaweb2-log
+        - name: var-spool-icinga2
+          persistentVolumeClaim:
+            claimName: {{ include "icinga2.fullname" . }}-icinga2-spool
