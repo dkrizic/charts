@@ -7,6 +7,8 @@ metadata:
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
   {{- end }}
   selector:
     matchLabels:
@@ -27,33 +29,52 @@ spec:
       serviceAccountName: {{ include "neos.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: copy-neos-data
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+            - mountPath: /var/www/html/neoscms-copy
+              name: neos-data
+            - mountPath: /settings
+              name: neos-settings
+          command:
+            - /bin/bash
+            - -c
+            - cp -avrp /var/www/html/neoscms/* /var/www/html/neoscms-copy/; cp /settings/Settings.yaml /var/www/html/neoscms-copy/Configuration/
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - /bin/bash
-            - -c
-            - --
-          args:
-            - /neos-example/flow server:run
           ports:
             - name: http
-              containerPort: 8081
+              containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            - name: https
+              containerPort: 443
+              protocol: TCP
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: http
+#          readinessProbe:
+#            httpGet:
+#              path: /
+#              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /var/www/html/neoscms
+              name: neos-data
       {{- with .Values.nodeSelector }}
+      volumes:
+        - name: neos-data
+          persistentVolumeClaim:
+            claimName: neos
+        - name: neos-settings
+          configMap:
+            name: neos
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}

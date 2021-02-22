@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
 
 ingress:
   enabled: false
@@ -77,3 +77,18 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+persistence:
+  size: 10Gi
+  storageClassName: ""
+
+neos:
+  settings:
+    Neos:
+      Flow:
+        persistence:
+          backendOptions:
+            dbname: 'neos'
+            user: 'neos'             # adjust to your database user
+            password: 'neos'         # adjust to your database password
+            host: 'neos-mariadb'
