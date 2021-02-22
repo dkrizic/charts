@@ -9,3 +9,7 @@ data:
   Settings.yaml: |-
   {{- toYaml . | nindent 4 }}
   {{- end }}
+  {{- with .Values.neos.sites.neoscms }}
+  neoscms.conf: |-
+  {{- toString . | nindent 4 }}
+  {{- end }}

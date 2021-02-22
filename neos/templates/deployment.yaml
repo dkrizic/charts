@@ -33,10 +33,13 @@ spec:
         - name: copy-neos-data
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           volumeMounts:
-            - mountPath: /var/www/html/neoscms-copy
-              name: neos-data
-            - mountPath: /settings
-              name: neos-settings
+            - name: neos-data
+              mountPath: /var/www/html/neoscms-copy
+            - name: neos-settings
+              mountPath: /settings
+            - name: neos-settings
+              mountPath: /etc/apache2/sites-available/neoscms.conf
+              subPath: neoscms.conf
           command:
             - /bin/bash
             - -c

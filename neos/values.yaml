@@ -92,3 +92,24 @@ neos:
             user: 'neos'             # adjust to your database user
             password: 'neos'         # adjust to your database password
             host: 'neos-mariadb'
+  sites:
+    neoscms: |-
+      <VirtualHost *:80>
+           ServerAdmin admin@example.com
+           DocumentRoot /var/www/html/neoscms/Web
+           ServerName neos.example
+
+           ErrorLog ${APACHE_LOG_DIR}/neos_error.log
+           CustomLog ${APACHE_LOG_DIR}/neos_access.log combined
+
+           <Directory /var/www/html/neoscms/Web/>
+              Options FollowSymlinks
+              AllowOverride All
+              Require all granted
+              RewriteEngine on
+              RewriteBase /
+              RewriteCond %{REQUEST_FILENAME} !-f
+              RewriteRule ^(.*) index.php [PT,L]
+          </Directory>
+
+      </VirtualHost>
