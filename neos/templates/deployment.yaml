@@ -37,9 +37,6 @@ spec:
               mountPath: /var/www/html/neoscms-copy
             - name: neos-settings
               mountPath: /settings
-            - name: neos-settings
-              mountPath: /etc/apache2/sites-available/neoscms.conf
-              subPath: neoscms.conf
           command:
             - /bin/bash
             - -c
@@ -68,8 +65,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: /var/www/html/neoscms
-              name: neos-data
+            - name: neos-data
+              mountPath: /var/www/html/neoscms
+            - name: neos-settings
+              mountPath: /etc/apache2/sites-available/neoscms.conf
+              subPath: neoscms.conf
       {{- with .Values.nodeSelector }}
       volumes:
         - name: neos-data
