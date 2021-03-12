@@ -40,7 +40,7 @@ spec:
           command:
             - /bin/bash
             - -c
-            - cp -avrp /var/www/html/neoscms/* /var/www/html/neoscms-copy/; cp /settings/Settings.yaml /var/www/html/neoscms-copy/Configuration/
+            - cp -avrp /var/www/html/neoscms/* /var/www/html/neoscms-copy/; cp /settings/Settings.yaml /var/www/html/neoscms-copy/Configuration/Settings.yaml; chown www-data:www-data /var/www/html/neoscms-copy/Configuration/Settings.yaml
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

@@ -50,6 +50,8 @@ spec:
           volumeMounts:
             - name: checkmk-sites
               mountPath: /omd/sites
+            - name: checkmk-backup
+              mountPath: /backup
             - name: temp
               mountPath: /omd/sites/cmk/tmp
           resources:
@@ -70,6 +72,9 @@ spec:
         - name: checkmk-sites
           persistentVolumeClaim:
             claimName: {{ include "checkmk.fullname" . }}-sites
+        - name: checkmk-backup
+          persistentVolumeClaim:
+            claimName: {{ include "checkmk.fullname" . }}-backup
         - name: temp
           emptyDir:
             medium: Memory
