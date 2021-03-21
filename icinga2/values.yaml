@@ -78,11 +78,19 @@ tolerations: []
 
 affinity: {}
 
-database:
-  hostname: icinga-mariadb
-  username: icinga
-  password: icinga
-  port: 3306
+env:
+  - name: DEFAULT_MYSQL_USER
+    value: "icinga"
+  - name: DEFAULT_MYSQL_PASS
+    value: "icinga"
+  - name: DEFAULT_MYSQL_HOST
+    value: "icinga"
+  - name: DEFAULT_MYSQL_PORT
+    value: "3306"
+  - name: MYSQL_ROOT_USER
+    value: "root"
+  - name: MYSQL_ROOT_PASSWORD
+    value: "icinga"
 
 persistence:
   icinga2:

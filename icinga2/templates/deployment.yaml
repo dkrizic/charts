@@ -36,27 +36,13 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: DEFAULT_MYSQL_USER
-              value: "{{ .Values.database.username }}"
-            - name: DEFAULT_MYSQL_PASS
-              value: "{{ .Values.database.password }}"
-            - name: DEFAULT_MYSQL_HOST
-              value: "{{ .Values.database.hostname }}"
-            - name: DEFAULT_MYSQL_PORT
-              value: "{{ .Values.database.port }}"
-            - name: ICINGA2_IDO_MYSQL_HOST
-              value: "{{ .Values.database.hostname }}"
-            - name: ICINGAWEB2_MYSQL_HOST
-              value: "{{ .Values.database.hostname }}"
-            - name: ICINGAWEB2_DIRECTOR_MYSQL_HOST
-              value: "{{ .Values.database.hostname }}"
-            - name: MYSQL_ROOT_USER
-              value: ""
-            - name: MYSQL_ROOT_PASSWORD
-              value: ""
+            {{- toYaml .Values.env | nindent 12 }}
           ports:
             - name: http
               containerPort: 80
+              protocol: TCP
+            - name: director
+              containerPort: 5665
               protocol: TCP
           livenessProbe:
             httpGet:
