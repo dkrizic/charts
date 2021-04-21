@@ -1,0 +1,80 @@
+apiVersion: v1
+entries:
+  checkmk:
+  - apiVersion: v2
+    appVersion: "1.16"
+    created: "2021-04-21T12:47:06.319279508Z"
+    description: A Helm chart for Kubernetes
+    digest: fa43d7bf4c47c9ea5ef857734f776be6910fdd120790b5cfdcbe174488953df5
+    name: checkmk
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/checkmk-0.1.5/checkmk-0.1.5.tgz
+    version: 0.1.5
+  fhem:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2021-04-21T12:47:06.417762261Z"
+    description: A Helm chart for Kubernetes
+    digest: cadb8e9076b69b7132ac749d56d0c98dc7d326b4900a8357bf713d83569febd3
+    name: fhem
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/fhem-0.1.4/fhem-0.1.4.tgz
+    version: 0.1.4
+  homebridge:
+  - apiVersion: v2
+    appVersion: v1.2.3
+    created: "2021-04-21T12:47:06.52225995Z"
+    description: A Helm chart for Kubernetes
+    digest: bd79cdda9daa53c170603830c9ee272666bdb9fad66342ae1cfd840549466602
+    name: homebridge
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/homebridge-0.1.6/homebridge-0.1.6.tgz
+    version: 0.1.6
+  icinga2:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-04-21T12:47:06.635252472Z"
+    description: A Helm chart for Kubernetes
+    digest: 5e69534e49e7d60f9b4a9afd003965b9157f2252e26d8ce2597c5e16af9c77b1
+    name: icinga2
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/icinga2-0.1.0/icinga2-0.1.0.tgz
+    version: 0.1.0
+  neos:
+  - apiVersion: v2
+    appVersion: "7.0"
+    created: "2021-04-21T12:47:06.739122636Z"
+    description: A Helm chart for Kubernetes
+    digest: 0f3ede981054c606956bd2ace4c911e499c615c29b949f7b6914e200d7765cd2
+    name: neos
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/neos-0.1.5/neos-0.1.5.tgz
+    version: 0.1.5
+  observium:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-04-21T12:47:06.843151007Z"
+    description: A Helm chart for Kubernetes
+    digest: e6e3a38fc863e6e6227d9b9f943896c6011f85dad5084ef92566647008cc60e5
+    name: observium
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/observium-0.1.2/observium-0.1.2.tgz
+    version: 0.1.2
+  oscam:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-04-21T12:47:07.015050533Z"
+    description: A Helm chart for Kubernetes
+    digest: d8bc7a94c20ff34b2d9e1ec0dbb1a93c22408dbd3717080fe227842277524fff
+    name: oscam
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/oscam-0.1.2/oscam-0.1.2.tgz
+    version: 0.1.2
+generated: "2021-04-21T12:47:07.015057033Z"
