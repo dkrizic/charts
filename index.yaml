@@ -77,4 +77,15 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/oscam-0.1.2/oscam-0.1.2.tgz
     version: 0.1.2
-generated: "2021-04-21T12:47:07.015057033Z"
+  proxy:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-04-21T13:14:43.935191421Z"
+    description: A Helm chart for Kubernetes
+    digest: befa4e32fd73ab3a155bb7742534c4e91f17503688310d245c1b0d487ec15de3
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-04-21T13:14:43.935199921Z"
