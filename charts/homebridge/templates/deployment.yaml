@@ -60,6 +60,7 @@ spec:
               protocol: TCP
             {{- end }}
           livenessProbe:
+            failureThreshold: 10
             httpGet:
               path: /
               port: http
