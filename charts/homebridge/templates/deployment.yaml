@@ -64,6 +64,7 @@ spec:
               path: /
               port: http
           readinessProbe:
+            failureThreshold: 20
             httpGet:
               path: /
               port: http
