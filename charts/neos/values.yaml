@@ -8,7 +8,7 @@ image:
   repository: dkrizic/neos
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "c6e5ea8-linux-arm64"
+  tag: "7.1.0"
 
 imagePullSecrets: []
 nameOverride: ""
