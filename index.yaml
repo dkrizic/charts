@@ -56,6 +56,16 @@ entries:
     version: 0.1.0
   neos:
   - apiVersion: v2
+    appVersion: 7.1.0
+    created: "2021-05-25T13:05:34.261689136Z"
+    description: A Helm chart for Kubernetes
+    digest: b1dc3eda363a5346818d1c1b132b79baec8a0ce6a90a455f7828d13dd9330178
+    name: neos
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/neos-0.1.6/neos-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     appVersion: "7.0"
     created: "2021-04-21T12:47:06.739122636Z"
     description: A Helm chart for Kubernetes
@@ -148,4 +158,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-25T12:18:15.867994518Z"
+generated: "2021-05-25T13:05:34.261977637Z"
