@@ -1,0 +1,22 @@
+image:
+  repository: bitnami/kubectl
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+
+cronjob:
+  schedule: '0 * * * *'
+  deployment: "tomcat-backup-target"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  command:
+  - 'kubectl'
+  - 'version'

@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "cronjob.fullname" . }}
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: {{ .Values.cronjob.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.cronjob.failedJobsHistoryLimit }}
+  schedule: {{ .Values.cronjob.schedule }}
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 600 # timeout, makes most sense with
+      template:
+        spec:
+          serviceAccountName: {{ include "cronjob.fullname" . }}
+          restartPolicy: Never
+          containers:
+          - name: kubectl
+            image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+            command:
+            {{ toYaml .Values.cronjob.command | nindent 12 }}
+
