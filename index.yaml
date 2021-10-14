@@ -98,6 +98,16 @@ entries:
     version: 0.1.5
   observium:
   - apiVersion: v2
+    appVersion: 21.10.1
+    created: "2021-10-14T08:28:02.450221186Z"
+    description: A Helm chart for Kubernetes
+    digest: 656fbe8e9c482d168c588b5a0c2e0deb8ae778839e0477467fc2685650a985a8
+    name: observium
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/observium-0.1.6/observium-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     appVersion: "20.9"
     created: "2021-05-25T12:18:15.867959416Z"
     description: A Helm chart for Kubernetes
@@ -179,4 +189,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-10T22:53:37.973867502Z"
+generated: "2021-10-14T08:28:02.450469289Z"
