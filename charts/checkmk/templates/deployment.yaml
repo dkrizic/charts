@@ -59,8 +59,8 @@ spec:
               mountPath: /omd/sites
             - name: checkmk-backup
               mountPath: /backup
-            - name: temp
-              mountPath: /omd/sites/cmk/tmp
+#            - name: temp
+#              mountPath: /omd/sites/cmk/tmp
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
