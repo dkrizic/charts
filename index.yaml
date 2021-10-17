@@ -3,6 +3,16 @@ entries:
   checkmk:
   - apiVersion: v2
     appVersion: "1.16"
+    created: "2021-10-17T00:20:04.970805771Z"
+    description: A Helm chart for Kubernetes
+    digest: 3fa19fe1bb4306c33a05c2f37b48781a9a937089bfe3a3ac1f85710d1cc1f09c
+    name: checkmk
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/checkmk-0.1.8/checkmk-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: "1.16"
     created: "2021-10-16T09:20:19.464284278Z"
     description: A Helm chart for Kubernetes
     digest: 3c3f4dd26a596cb205c52b5b69a56b786ab4551b21ceff64d76a6f636cf58975
@@ -199,4 +209,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-16T09:20:19.464314078Z"
+generated: "2021-10-17T00:20:04.970856071Z"
