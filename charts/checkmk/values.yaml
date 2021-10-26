@@ -8,7 +8,7 @@ image:
   repository: checkmk/check-mk-raw
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2.0.0p12"
+  tag: "2.0.0p13"
 
 imagePullSecrets: []
 nameOverride: ""
