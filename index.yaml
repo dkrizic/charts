@@ -201,6 +201,16 @@ entries:
   proxy:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-01-16T20:15:43.780630917Z"
+    description: A Helm chart for Kubernetes
+    digest: e8b4f5163d9fc139422ee7e35f9a24a5bd51a23ebabdfb14a5ad72c7780815e7
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/proxy-0.1.4/proxy-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-01-16T20:07:59.312507872Z"
     description: A Helm chart for Kubernetes
     digest: 4eb9eaef306022a86f7c7fe2567bc14168aeb52c859070c23a9952d288df6208
@@ -239,4 +249,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-16T20:07:59.312644072Z"
+generated: "2022-01-16T20:15:43.780678416Z"
