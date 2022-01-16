@@ -6,6 +6,6 @@ subsets:
   - addresses:
       - ip: {{ .Values.endpoint.ipAddress }}
     ports:
-      - name: http
+      - name: {{ .Values.endpoint.name }}
         port: {{ .Values.endpoint.port }}
         protocol: TCP
