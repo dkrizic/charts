@@ -81,6 +81,8 @@ spec:
           - name: homebridge-config
             mountPath: /homebridge
           env:
+            - name: ENABLE_AVAHI
+              value: "1"
             - name: HOMEBRIDGE_CONFIG_UI
               value: "1"
             - name: HOMEBRIDGE_CONFIG_UI_PORT
