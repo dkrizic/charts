@@ -8,7 +8,7 @@ image:
   repository: oznu/homebridge
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "arm64v8"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
