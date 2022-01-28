@@ -87,6 +87,8 @@ homebridge:
   portHttp:
     enabled: false
     port: 1234
+  avahi:
+    enable: true
   config: >-
     {
     	"bridge": {
