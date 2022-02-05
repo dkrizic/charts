@@ -94,7 +94,7 @@ spec:
             - name: TZ
               value: "{{ .Values.homebridge.timezone }}"
             - name: PACKAGES
-              value: ffmpeg
+              value: "libpcap-dev ffmpeg"
             - name: TERMINATE_ON_ERROR
               value: "1"
       {{- with .Values.nodeSelector }}
