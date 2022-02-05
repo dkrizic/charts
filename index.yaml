@@ -86,6 +86,16 @@ entries:
   homebridge:
   - apiVersion: v2
     appVersion: v1.4.0
+    created: "2022-02-05T12:16:39.936533878Z"
+    description: A Helm chart for Kubernetes
+    digest: 68d5e9270750da22d1808a0ffbf9992f7eb230a4f5451c270f319def86ecb2cc
+    name: homebridge
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/homebridge-0.3.0/homebridge-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: v1.4.0
     created: "2022-02-05T12:07:48.375469525Z"
     description: A Helm chart for Kubernetes
     digest: 4fd2c144ee96f233020fb215bb4808fc15873ea8c542a8a14c5c5133b2c2aa5b
@@ -369,4 +379,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-05T12:07:48.375725534Z"
+generated: "2022-02-05T12:16:39.93665028Z"
