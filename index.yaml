@@ -86,6 +86,16 @@ entries:
   homebridge:
   - apiVersion: v2
     appVersion: v1.4.0
+    created: "2022-02-06T22:09:06.703416685Z"
+    description: A Helm chart for Kubernetes
+    digest: fb213c02d503e49a9057c60329dd410738232d75a90c4d196f2ccc627cabbeaf
+    name: homebridge
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/homebridge-0.3.4/homebridge-0.3.4.tgz
+    version: 0.3.4
+  - apiVersion: v2
+    appVersion: v1.4.0
     created: "2022-02-05T23:57:09.957481045Z"
     description: A Helm chart for Kubernetes
     digest: e3366acbe1f8555ed2f5c32e200c3ea6a6942ca06e1785ac93615266b7adafb3
@@ -340,6 +350,16 @@ entries:
   oscam:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-02-06T22:09:06.996611097Z"
+    description: A Helm chart for Kubernetes
+    digest: 32977dd58770e5a8460d2a1df229936c84af52f45ef38ddc4606acadc455694a
+    name: oscam
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/oscam-0.1.3/oscam-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-04-21T12:47:07.015050533Z"
     description: A Helm chart for Kubernetes
     digest: d8bc7a94c20ff34b2d9e1ec0dbb1a93c22408dbd3717080fe227842277524fff
@@ -409,4 +429,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-05T23:57:09.957780044Z"
+generated: "2022-02-06T22:09:06.9969279Z"
