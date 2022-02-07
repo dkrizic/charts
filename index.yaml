@@ -350,6 +350,16 @@ entries:
   oscam:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-02-07T20:14:41.144831315Z"
+    description: A Helm chart for Kubernetes
+    digest: 1ec50980d9da23078b5de1961a59b9a3cc02a360fb9a6d8a5599f956048fdd39
+    name: oscam
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/oscam-0.1.4/oscam-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-02-06T22:09:06.996611097Z"
     description: A Helm chart for Kubernetes
     digest: 32977dd58770e5a8460d2a1df229936c84af52f45ef38ddc4606acadc455694a
@@ -429,4 +439,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-06T22:09:06.9969279Z"
+generated: "2022-02-07T20:14:41.144951217Z"
