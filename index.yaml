@@ -275,6 +275,17 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/icinga2-0.1.0/icinga2-0.1.0.tgz
     version: 0.1.0
+  librenms:
+  - apiVersion: v2
+    appVersion: 22.1.0
+    created: "2022-02-12T17:18:20.838422624Z"
+    description: A Helm chart for Kubernetes
+    digest: ea6014f83904fa8dc8e1358e807e372f6555a6ca60104f8a76e74eff94002da0
+    name: librenms
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/librenms-0.1.0/librenms-0.1.0.tgz
+    version: 0.1.0
   neos:
   - apiVersion: v2
     appVersion: 7.1.0
@@ -439,4 +450,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-07T20:28:15.349965678Z"
+generated: "2022-02-12T17:18:20.838561725Z"
