@@ -278,6 +278,16 @@ entries:
   librenms:
   - apiVersion: v2
     appVersion: 22.1.0
+    created: "2022-02-13T11:26:53.429353777Z"
+    description: A Helm chart for Kubernetes
+    digest: 43fc3aef251cf9d619092b2078a65b1a9988ff07b0cc17e2bdd6f6acca5640cc
+    name: librenms
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/librenms-0.1.1/librenms-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 22.1.0
     created: "2022-02-12T17:18:20.838422624Z"
     description: A Helm chart for Kubernetes
     digest: ea6014f83904fa8dc8e1358e807e372f6555a6ca60104f8a76e74eff94002da0
@@ -450,4 +460,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-12T17:18:20.838561725Z"
+generated: "2022-02-13T11:26:53.429471178Z"
