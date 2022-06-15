@@ -8,7 +8,7 @@ image:
   repository: dkrizic/observium
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "21.10.1"
+  tag: "22.5"
 
 imagePullSecrets: []
 nameOverride: ""
