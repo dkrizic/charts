@@ -6,7 +6,7 @@ spec:
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: {{ .Values.cronjob.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: {{ .Values.cronjob.failedJobsHistoryLimit }}
-  schedule: {{ .Values.cronjob.schedule }}
+  schedule: "{{ .Values.cronjob.schedule }}"
   jobTemplate:
     spec:
       backoffLimit: 2
