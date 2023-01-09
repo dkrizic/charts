@@ -52,6 +52,13 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: joomla-data
+              mountPath: /var/www/html
+      volumes:
+        - name: joomla-data
+          persistentVolumeClaim:
+            claimName: {{ include "joomla.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

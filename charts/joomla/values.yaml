@@ -86,3 +86,8 @@ database:
   password: ""
   host: ""
   name: ""
+
+persistence:
+  storageClassName: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
