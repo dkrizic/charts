@@ -295,6 +295,17 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/icinga2-0.1.0/icinga2-0.1.0.tgz
     version: 0.1.0
+  joomla:
+  - apiVersion: v2
+    appVersion: 4.2.6-php8.1-apache
+    created: "2023-01-09T08:37:41.603013632Z"
+    description: A Helm chart for Joomla
+    digest: a764a63358dec85f7b4ad715155c4d9c691d643c25fb0685b4c103573857fcdb
+    name: joomla
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/joomla-0.1.0/joomla-0.1.0.tgz
+    version: 0.1.0
   librenms:
   - apiVersion: v2
     appVersion: 22.1.0
@@ -510,4 +521,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-31T14:57:19.588983618Z"
+generated: "2023-01-09T08:37:41.603295533Z"
