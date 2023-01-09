@@ -298,6 +298,16 @@ entries:
   joomla:
   - apiVersion: v2
     appVersion: 4.2.6-php8.1-apache
+    created: "2023-01-09T12:05:34.431653284Z"
+    description: A Helm chart for Joomla
+    digest: 91985ce8190204ed85e0819f5b13c9251e590b77a1d7c637a77501acd09859c2
+    name: joomla
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/joomla-0.1.4/joomla-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 4.2.6-php8.1-apache
     created: "2023-01-09T09:01:28.815334286Z"
     description: A Helm chart for Joomla
     digest: 6771965c86059639a5e359713cbfe4151fa794aac68dfc773c6d4fae0d09c0d3
@@ -551,4 +561,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-09T09:01:28.815664203Z"
+generated: "2023-01-09T12:05:34.431775893Z"
