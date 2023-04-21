@@ -59,6 +59,10 @@ spec:
           volumeMounts:
             - mountPath: /server/volume
               name: {{ include "scrypted.fullname" . }}
+            {{- if .Values.raspberry.hardware }}
+            - mountPath: /dev/video0
+              name: dev-video0
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -75,3 +79,8 @@ spec:
         - name: {{ include "scrypted.fullname" . }}
           persistentVolumeClaim:
             claimName: {{ include "scrypted.fullname" . }}
+        {{- if .Values.raspberry.hardware }}
+        - name: dev-video0
+          hostPath:
+            path: /dev/video0
+        {{- end }}

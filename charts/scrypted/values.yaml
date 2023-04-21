@@ -76,3 +76,6 @@ affinity: {}
 persistence:
   size: 10Gi
   storageClass: ""
+
+raspberry:
+  hardware: false
