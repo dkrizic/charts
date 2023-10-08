@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: dkrizic/observium
+  repository: docker.io/dkrizic/observium
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "22.10"
+  tag: "23.09"
 
 imagePullSecrets: []
 nameOverride: ""
