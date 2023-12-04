@@ -84,6 +84,16 @@ entries:
   cronjob:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-12-04T16:50:10.397825573Z"
+    description: A Helm chart for Kubernetes
+    digest: a458b6953ece673a5d2247e65d0603979fbe81c483e149f6ed465e74997ec09d
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/cronjob-0.1.4/cronjob-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-12-06T14:14:21.657964615Z"
     description: A Helm chart for Kubernetes
     digest: 729e77b93ad19510cf9dbbeac48fca7eea7de150ad87950634ff17ccb96b152c
@@ -672,4 +682,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/scrypted-0.9.0/scrypted-0.9.0.tgz
     version: 0.9.0
-generated: "2023-10-08T16:57:41.070548102Z"
+generated: "2023-12-04T16:50:10.397976926Z"
