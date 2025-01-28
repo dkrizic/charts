@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "copilot-metrics-exporter.fullname" . }}
+  labels:
+    {{- include "copilot-metrics-exporter.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "copilot-metrics-exporter.name" . }}
+  endpoints:
+    - port: metrics
