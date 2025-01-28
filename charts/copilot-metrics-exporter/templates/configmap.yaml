@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "copilot-metrics-exporter.fullname" . }}
+  labels:
+    {{- include "copilot-metrics-exporter.labels" . | nindent 4 }}
+data:
+  PORT: "{{ .Values.service.port }}"
+  GITHUB_ORG: "{{ .Values.github.organization }}"
+  GITHUB_IS_ENTERPRISE: "{{ .Values.github.isEnterprise }}"
