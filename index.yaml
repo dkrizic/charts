@@ -562,6 +562,17 @@ entries:
     version: 0.1.2
   proxy:
   - apiVersion: v2
+    appVersion: 1.30.6
+    created: "2026-11-18T23:09:54.240165202Z"
+    description: Exposes a service outside the cluster (a device or server on the
+      LAN) through an Ingress, optionally via an nginx proxy
+    digest: d2545ef4dab8e0d6d53106838ace0062115531ec23ba4480a51660056f017953
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/proxy-0.2.0/proxy-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-02-04T08:25:58.196220264Z"
     description: A Helm chart for Kubernetes
@@ -682,4 +693,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/scrypted-0.9.0/scrypted-0.9.0.tgz
     version: 0.9.0
-generated: "2023-12-04T16:50:10.397976926Z"
+generated: "2026-11-18T23:09:54.240430428Z"
