@@ -22,7 +22,40 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# The target outside the cluster. Without nginx the Service points at it directly (Endpoints with ipAddress).
 endpoint:
   ipAddress: 1.2.3.4
+  # only used by nginx: connect to this name instead of ipAddress (resolved when nginx starts)
+  hostname: ""
   port: 80
   name: http
+
+# Optional nginx between the Service and the target, e.g. for a device with a self-signed certificate that the
+# ingress controller would reject. The Service then points at nginx, which talks plain HTTP to the ingress
+# controller and http or https to the target.
+nginx:
+  enabled: false
+  image:
+    repository: nginxinc/nginx-unprivileged
+    tag: 1.30.6-alpine
+    pullPolicy: IfNotPresent
+  replicas: 1
+  upstream:
+    # http or https
+    scheme: http
+    # verify the target's certificate (scheme https only); off for self-signed certificates
+    verify: false
+    # pass the Host header of the client (true) or the target's address (false)
+    passHostHeader: true
+  # seconds an idle connection (e.g. a websocket) to the target is kept open
+  readTimeout: 3600
+  resources:
+    requests:
+      cpu: 10m
+      memory: 16Mi
+    limits:
+      cpu: 500m
+      memory: 64Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}

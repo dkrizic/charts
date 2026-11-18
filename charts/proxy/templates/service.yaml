@@ -6,8 +6,17 @@ metadata:
     {{- include "proxy.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if .Values.nginx.enabled }}
+  selector:
+    {{- include "proxy.selectorLabels" . | nindent 4 }}
+  {{- end }}
   ports:
     - port: {{ .Values.service.port }}
+      {{- if .Values.nginx.enabled }}
+      targetPort: http
+      name: http
+      {{- else }}
       targetPort: {{ .Values.endpoint.port }}
-      protocol: TCP
       name: {{ .Values.endpoint.name }}
+      {{- end }}
+      protocol: TCP

@@ -1,0 +1,56 @@
+{{- if .Values.nginx.enabled }}
+{{- $upstream := printf "%s:%v" (default .Values.endpoint.ipAddress .Values.endpoint.hostname) .Values.endpoint.port }}
+{{- $https := eq .Values.nginx.upstream.scheme "https" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "proxy.fullname" . }}
+  labels:
+    {{- include "proxy.labels" . | nindent 4 }}
+data:
+  default.conf: |
+    map $http_upgrade $connection_upgrade {
+      default upgrade;
+      ''      close;
+    }
+
+    # health checks on their own port, so every path on 8080 belongs to the target
+    server {
+      listen 8081;
+      location = /healthz {
+        access_log off;
+        return 200;
+      }
+    }
+
+    server {
+      listen 8080;
+
+      location / {
+        proxy_pass         {{ .Values.nginx.upstream.scheme }}://{{ $upstream }};
+        {{- if .Values.nginx.upstream.passHostHeader }}
+        proxy_set_header   Host              $host;
+        {{- end }}
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $http_x_forwarded_proto;
+        {{- if $https }}
+        proxy_ssl_verify   {{ ternary "on" "off" .Values.nginx.upstream.verify }};
+        {{- if .Values.nginx.upstream.verify }}
+        proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+        {{- end }}
+        {{- if .Values.endpoint.hostname }}
+        proxy_ssl_server_name on;
+        proxy_ssl_name     {{ .Values.endpoint.hostname }};
+        {{- end }}
+        {{- end }}
+
+        # websockets and streamed responses
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade           $http_upgrade;
+        proxy_set_header   Connection        $connection_upgrade;
+        proxy_buffering    off;
+        proxy_read_timeout {{ .Values.nginx.readTimeout }}s;
+      }
+    }
+{{- end }}
