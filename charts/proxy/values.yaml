@@ -22,6 +22,24 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# Gateway API instead of (or next to) the Ingress; TLS is done by the Gateway listener
+httpRoute:
+  enabled: false
+  annotations: {}
+  # Gateways (and listeners) the route attaches to
+  parentRefs: []
+  #  - name: gateway
+  #    namespace: gateway
+  #    sectionName: https
+  hostnames: []
+  #  - chart-example.local
+  # every rule goes to the Service; matches and filters as in the HTTPRoute spec
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+
 # The target outside the cluster. Without nginx the Service points at it directly (Endpoints with ipAddress).
 endpoint:
   ipAddress: 1.2.3.4
