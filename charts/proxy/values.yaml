@@ -67,6 +67,8 @@ nginx:
     passHostHeader: true
   # seconds an idle connection (e.g. a websocket) to the target is kept open
   readTimeout: 3600
+  # largest request body (uploads); nginx's default is 1m, "0" means no limit
+  clientMaxBodySize: 1m
   resources:
     requests:
       cpu: 10m

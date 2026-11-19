@@ -25,6 +25,7 @@ data:
 
     server {
       listen 8080;
+      client_max_body_size {{ .Values.nginx.clientMaxBodySize }};
 
       location / {
         proxy_pass         {{ .Values.nginx.upstream.scheme }}://{{ $upstream }};
@@ -50,6 +51,8 @@ data:
         proxy_set_header   Upgrade           $http_upgrade;
         proxy_set_header   Connection        $connection_upgrade;
         proxy_buffering    off;
+        # stream uploads to the target instead of buffering them in /tmp first
+        proxy_request_buffering off;
         proxy_read_timeout {{ .Values.nginx.readTimeout }}s;
       }
     }
