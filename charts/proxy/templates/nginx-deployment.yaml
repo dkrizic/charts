@@ -17,6 +17,8 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/nginx-configmap.yaml") . | sha256sum }}
     spec:
+      # nginx never talks to the Kubernetes API
+      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -40,6 +42,7 @@ spec:
               port: health
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           {{- with .Values.nginx.resources }}
@@ -49,7 +52,12 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /etc/nginx/conf.d
+            # pid file and temp files of nginx-unprivileged
+            - name: tmp
+              mountPath: /tmp
       volumes:
+        - name: tmp
+          emptyDir: {}
         - name: config
           configMap:
             name: {{ include "proxy.fullname" . }}
