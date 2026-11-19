@@ -563,6 +563,17 @@ entries:
   proxy:
   - apiVersion: v2
     appVersion: 1.30.6
+    created: "2026-11-19T10:04:33.27500738Z"
+    description: Exposes a service outside the cluster (a device or server on the
+      LAN) through an Ingress, optionally via an nginx proxy
+    digest: 3ded7c2383012fd7d520f1284dd1189c85063723b8010bd073f1bb1cdd558fa1
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/dkrizic/charts/releases/download/proxy-0.4.0/proxy-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 1.30.6
     created: "2026-11-19T00:25:28.299633809Z"
     description: Exposes a service outside the cluster (a device or server on the
       LAN) through an Ingress, optionally via an nginx proxy
@@ -715,4 +726,4 @@ entries:
     urls:
     - https://github.com/dkrizic/charts/releases/download/scrypted-0.9.0/scrypted-0.9.0.tgz
     version: 0.9.0
-generated: "2026-11-19T00:25:28.29982737Z"
+generated: "2026-11-19T10:04:33.275191036Z"
